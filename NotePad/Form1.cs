@@ -18,9 +18,12 @@ namespace NotePad {
 
         private OpenFileDialog openFileDialog;
         private SaveFileDialog saveFileDialog;
+        private FontDialog fontDialog;
 
 
         private void NotePad_Load(object sender, EventArgs e) {
+
+            fontDialog = new FontDialog();
 
         }
 
@@ -96,6 +99,16 @@ namespace NotePad {
                 this.richTextBox1.Text = File.ReadAllText(openFileDialog.FileName);
                 this.Text = openFileDialog.FileName;
             }
+        }
+
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e) {
+            
+
+            if (fontDialog.ShowDialog() == DialogResult.OK) {
+                this.richTextBox1.Font = fontDialog.Font;
+            }
+
+
         }
     }
 }
